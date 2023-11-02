@@ -1,0 +1,264 @@
+﻿<h1>Yaprak Test Oluşturma Ekranı</h1>
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title">Different Width</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Testinize Ad Veriniz</label>
+                    <input id="adTest" type="text" class="form-control" placeholder="Ad">
+                </div>
+            </div>
+            <button id="testKaydet" class="btn btn-outline-danger">Kaydet</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Test Seçiniz</label>
+                    <select id="testsec" class="custom-select">
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Sınav Seçiniz</label>
+                    <select id="sinavSev" class="custom-select">
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Ders Seçiniz</label>
+                    <select id="dersSev" class="custom-select">
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <label>Konu Seçiniz</label>
+                <select id="konuSec" class="custom-select">
+                </select>
+            </div>
+            <div class="col-3">
+                <label>Soru Sayısı Giriniz</label>
+                <input id="soruSayisiInput" type="text" class="form-control" placeholder="Maximimum: 40">
+            </div>
+            <button id="detayKaydet" class="btn btn-outline-danger">Kaydet</button>
+        </div>
+        <div class="" id="detaylar">
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#detayKaydet").click(function () {
+            var testSec = $("#testsec").val();
+            var sinavSev = $("#sinavSev").val();
+            var dersSev = $("#dersSev").val();
+            var konuSec = $("#konuSec").val();
+            var soruSayisiInput = $("#soruSayisiInput").val();
+
+            // Tüm alanların dolu olduğunu kontrol et
+            if (testSec === "" || sinavSev === "" || dersSev === "" || konuSec === "" || soruSayisiInput === "") {
+                alert("Lütfen tüm alanları doldurun.");
+            } else {
+                // AJAX isteğini burada gerçekleştirin
+                $.ajax({
+                    url: "/Ogrenci/Home/addSoru",
+                    method: "POST",
+                    data: {
+                        testId: testSec,
+                        konuId: konuSec,
+                        adet: soruSayisiInput
+                    },
+                    success: function (response) {
+                        // İstek başarılı olduğunda yapılacak işlemler
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // İstek başarısız olduğunda yapılacak işlemler
+                        console.log(error);
+                    }
+                });
+                var testId = $("#testsec").val();
+                $.ajax({
+                    url: "/Ogrenci/Home/getDetays",
+                    type: "GET",
+                    data: {
+                        testId: testId
+                    },
+                    success: function (response) {
+                        // Dönen partialı idpart div'inin içine yazma
+                        $("#detaylar").html(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                        alert("İstek gönderilirken bir hata oluştu.");
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Sayfa yüklendiğinde sınavları doldur
+        $.ajax({
+            url: '/Ogrenci/Home/getTest',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                // Testleri doldur
+                $('#testsec').empty();
+                $('#testsec').append('<option value="">Test Seçiniz</option>'); // Boş seçenek ekle
+                $.each(response, function (key, item) {
+                    $('#testsec').append('<option value="' + item.id + '">' + item.ad + '</option>');
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#testKaydet').on('click', function () {
+            var ad = $('#adTest').val();
+
+            if (ad) {
+                // AJAX isteği gönder
+                $.ajax({
+                    url: '/Ogrenci/Home/addTest',
+                    type: 'GET',
+                    data: { Ad: ad },
+                    dataType: 'json',
+                    success: function (response) {
+                        alert(response);
+                    }
+                });
+            } else {
+                alert('Test adı boş olamaz!');
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Sayfa yüklendiğinde sınavları doldur
+        $.ajax({
+            url: '/Ogrenci/Home/getSinav',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                // Sınavları doldur
+                $('#sinavSev').empty();
+                $('#sinavSev').append('<option value="">Sınav Seçiniz</option>'); // Boş seçenek ekle
+                $.each(response, function (key, item) {
+                    $('#sinavSev').append('<option value="' + item.id + '">' + item.ad + '</option>');
+                });
+            }
+        });
+
+        // Sınav seçimi değiştiğinde
+        $('#sinavSev').on('change', function () {
+            var sinavId = $(this).val();
+            if (sinavId) {
+                // AJAX isteği gönder
+                $.ajax({
+                    url: '/Ogrenci/Home/getDers',
+                    type: 'GET',
+                    data: { egitimId: sinavId },
+                    dataType: 'json',
+                    success: function (response) {
+                        // Dersleri doldur
+                        $('#dersSev').empty();
+                        $('#dersSev').append('<option value="">Ders Seçiniz</option>'); // Boş seçenek ekle
+                        $.each(response, function (key, item) {
+                            $('#dersSev').append('<option value="' + item.id + '">' + item.ad + '</option>');
+                        });
+                        $('#konuSec').empty(); // Konu seçimini sıfırla
+                    }
+                });
+            } else {
+                $('#dersSev').empty(); // Sınav seçimi yapılmadıysa Ders seçimini sıfırla
+                $('#konuSec').empty(); // Sınav seçimi yapılmadıysa Konu seçimini sıfırla
+            }
+        });
+
+        // Ders seçimi değiştiğinde
+        $('#dersSev').on('change', function () {
+            var dersId = $(this).val();
+            if (dersId) {
+                // AJAX isteği gönder
+                $.ajax({
+                    url: '/Ogrenci/Home/getKonu',
+                    type: 'GET',
+                    data: { dersId: dersId },
+                    dataType: 'json',
+                    success: function (response) {
+                        // Konuları doldur
+                        $('#konuSec').empty();
+                        $('#konuSec').append('<option value="">Konu Seçiniz</option>'); // Boş seçenek ekle
+                        $.each(response, function (key, item) {
+                            $('#konuSec').append('<option value="' + item.id + '">' + item.ad + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#konuSec').empty(); // Ders seçimi yapılmadıysa Konu seçimini sıfırla
+            }
+        });
+
+        // Konu seçimi değiştiğinde
+        $('#konuSec').on('change', function () {
+            var konuId = $(this).val();
+            if (konuId) {
+                // AJAX isteği gönder
+                $.ajax({
+                    url: '/Ogrenci/Home/getsoruSayisi',
+                    type: 'GET',
+                    data: { konuId: konuId },
+                    dataType: 'json',
+                    success: function (response) {
+                        var soruSayisi = parseInt(response);
+                        // Soru sayısını placeholder olarak yazdır
+                        $('#soruSayisiInput').attr('placeholder', 'Maksimum: ' + soruSayisi);
+                        // Maksimum giriş değerini ayarla
+                        $('#soruSayisiInput').attr('max', soruSayisi);
+                    }
+                });
+            } else {
+                // Konu seçimi yapılmadıysa placeholder ve maksimum değeri sıfırla
+                $('#soruSayisiInput').attr('placeholder', '');
+                $('#soruSayisiInput').attr('max', '');
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Test seçildiğinde istek gönderme işlemi
+        $("#testsec").change(function () {
+            var testId = $(this).val();
+            $.ajax({
+                url: "/Ogrenci/Home/getDetays",
+                type: "GET",
+                data: {
+                    testId: testId
+                },
+                success: function (response) {
+                    // Dönen partialı idpart div'inin içine yazma
+                    $("#detaylar").html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                    alert("İstek gönderilirken bir hata oluştu.");
+                }
+            });
+        });
+    });
+</script>

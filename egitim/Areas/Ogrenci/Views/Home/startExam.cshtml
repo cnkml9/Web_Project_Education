@@ -1,0 +1,78 @@
+﻿<div class="auto-container">
+    <!-- Sec Title -->
+    <div class="sec-title">
+        <h4>Sınav Başlat</h4>
+    </div>
+    <div class="inner-container">
+        <div class="col-3">
+            <div class="form-group">
+                <label>Test Seçiniz</label>
+                <select id="testsec" class="custom-select">
+                </select>
+            </div>
+        </div>
+        <button id="detayKaydet" class="btn btn-outline-danger">Sınavı Başlat</button>
+        <!-- Upper Box -->
+        <div class="upper-box">
+            <!-- Question Box -->
+            <div class="question-box">
+                <div id="row" class="row clearfix">
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Lower Box -->
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Sayfa yüklendiğinde sınavları doldur
+        $.ajax({
+            url: '/Ogrenci/Home/getTest',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                // Testleri doldur
+                $('#testsec').empty();
+                $('#testsec').append('<option value="">Test Seçiniz</option>'); // Boş seçenek ekle
+                $.each(response, function (key, item) {
+                    $('#testsec').append('<option value="' + item.id + '">' + item.ad + '</option>');
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // detayKaydet düğmesine tıklandığında işlemleri gerçekleştir
+        $('#detayKaydet').click(function () {
+            var testId = $('#testsec').val();
+
+            if (testId === '') {
+                alert('Lütfen bir test seçin.');
+                return;
+            }
+
+            // AJAX isteğini gönder
+            $.ajax({
+                url: '/Ogrenci/Home/startExamPartial',
+                type: 'GET',
+                data: { testId: testId },
+                dataType: 'html',
+                success: function (response) {
+                    // Dönen kısmi görünümü sayfaya ekle
+                    $('#row').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>

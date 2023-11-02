@@ -1,0 +1,28 @@
+﻿
+
+@if (Model != null && Model.Count > 0)
+{
+    <h2>Cevaplar:</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Soru</th>
+                <th>Cevap</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cevap in Model)
+            {
+                <tr>
+                    <td>@cevap.</td>
+                    <td>@cevap.Cevap</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Henüz cevap bulunmamaktadır.</p>
+}

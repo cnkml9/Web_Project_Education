@@ -1,0 +1,22 @@
+﻿@model List<EgitimWeb.Entites.TestDetay>
+<div class="container"  >
+
+@foreach (var item in Model.ToList())
+{
+    <div class="row">
+        <div class="col-4">
+            <label>Konu Adı</label>
+            <input value="@item.Konu.Ad" readonly />
+        </div>
+        <div class="col-6">
+            <label>İstenen Soru Sayısı</label>
+            <input value="@item.SoruSayisi" />
+        </div>
+    </div>
+}
+</div>
+<style>
+    .font-size-16 {
+        font-size: 20px !important;
+    }
+</style>

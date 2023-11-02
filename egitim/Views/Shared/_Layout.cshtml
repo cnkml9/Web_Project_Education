@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - egitim</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+     <link rel="stylesheet" href="~/_Layout.cshtml.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Glide.js JavaScript -->
+
+    <script>
+        // Glide.js kaydırıcıyı başlat
+        new Glide('.glide', {
+            type: 'carousel',
+            perView: 3,
+            breakpoints: {
+                640: {
+                    perView: 1
+                },
+                768: {
+                    perView: 2
+                }
+            }
+        }).mount();
+    </script>
+
+</head>
+<body>
+
+
+ <!-- Nav Top Start-->
+@*<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">egitim</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" style="visibility: inherit;">
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item">
+            <a class="nav-link text-dark custom-link" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark custom-link" asp-area="" asp-controller="Home" asp-action="Hakkimizda">Hakkımızda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark custom-link" asp-area="" asp-controller="Home" asp-action="Franchise">Franchise</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark custom-link" asp-area="" asp-controller="Home" asp-action="insanKaynaklari">İnsan Kaynakları</a>
+          </li>
+        </ul>
+        <partial name="_LoginPartial" />
+      </div>
+    </div>
+  </nav>
+</header>
+*@
+
+
+  <!-- Nav Top Start-->
+  <div class="hidden lg:block w-full py-4 flex flex-col justify-center item-center border-b-2 border-zinc-200">
+    <div class="container mx-auto flex flex-row justify-between">
+      <ul class="flex flex-row gap-8 text-lg text-zinc-500 list-disc">
+        <li class="list-none"><a asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+        <li ><a asp-area="" asp-controller="Home" asp-action="Hakkimizda">Hakkımızda</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Franchise">Franchise</a></li>
+        <li><a  asp-area="" asp-controller="Home" asp-action="insanKaynaklari">İnsan Kaynakları</a></li>
+      </ul>
+      <ul class="flex flex-row gap-8 text-lg text-zinc-500 list-disc">
+        <li class="list-none"> <a href="tel:+">0505 0555 55 55</a> </li>
+        <li> <a href="mailto:"> mail@mailadresi.com</a> </li>
+        <li class=" flex flex-col justify-center">
+          <ul class="flex flex-row gap-2">
+            <li><a href="#"> <img src="./images/faceicon.png" alt=""> </a></li>
+            <li><a href="#"> <img src="./images/insicon.png" alt=""> </a></li>
+            <li><a href="#"> <img src="./images/twicon.png" alt=""> </a></li>
+          </ul>
+         <li>  <partial name="_LoginPartial" /></li>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Nav Top End-->
+<!-- ----------------------------------------------- -->
+  <!-- Navbar Start -->
+    <div class="hidden md:block w-full py-6">
+    <div class="container mx-auto flex flex-row justify-between">
+      <!-- LOGO -->
+      <div class="w-fit flex flex-row item-center">
+        <img src="~/img/699c6027-eff0-4436-8227-1d86939dd3cc.jpg" style="width:150px;height:150px;">
+        <div class="flex flex-col justify-center pl-2 ">
+          <h1 class="text-xl font-bold">İhtiyaç Akademi</h1>
+          <p>Eğitim Kurumları</p>
+        </div>
+      </div>
+
+      <div class="relative flex flex-col justify-center">
+        <ul class="flex flex-row gap-8 text-md text-zinc-800">
+          <li class="relative group">
+            <a class="hover:text-red-600 transition-all font-medium" href="#">Sınavlar</a>
+            <ul class="absolute hidden group-hover:flex flex-col w-fit py-4 z-50 bg-white p-2 space-y-2 rounded-md shadow-md">
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white "asp-area="" asp-action="LGS" asp-controller="Sinav">LGS</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="TYT" asp-controller="Sinav">TYT</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="AYT" asp-controller="Sinav">AYT</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="YDT" asp-controller="Sinav">YDT</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="YDS" asp-controller="Sinav">YDS</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="KPSS" asp-controller="Sinav">KPSS</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="GKGY" asp-controller="Sinav">GKGY</a></li>
+              <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="OABT" asp-controller="Sinav">ÖABT</a></li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a class="hover:text-red-600 transition-all font-medium" href="#">Kurslar</a>
+            <ul class="absolute hidden group-hover:flex flex-col w-fit py-4 z-50 bg-white p-2 space-y-2 rounded-md shadow-md">
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white "asp-area="" asp-action="LGS" asp-controller="Kurslar">LGS</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="TYT" asp-controller="Kurslar">TYT</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="AYT" asp-controller="Kurslar">AYT</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="YDT" asp-controller="Kurslar">YDT</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="YDS" asp-controller="Kurslar">YDS</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="KPSS" asp-controller="Kurslar">KPSS</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="GKGY" asp-controller="Kurslar">GKGY</a></li>
+            <li><a class="p-2 rounded-md hover:bg-red-600 hover:text-white " asp-area="" asp-action="OABT" asp-controller="Kurslar">ÖABT</a></li>
+            </ul>
+          </li>
+          <li><a class="hover:text-red-600 transition-all font-medium" asp-area="" asp-action="sinavTakvimi" asp-controller="Home">Sınav Takvimi</a></li>
+          <li><a class="hover:text-red-600 transition-all font-medium"  asp-area="" asp-controller="Home" asp-action="Iletisim">İletişim</a></li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Navbar End -->
+  <!-- ----------------------------------------------- -->
+<!-- Mobile Menu -->
+<div class="block md:hidden w-full bg-white relative z-50 ">
+  <div class="container mx-auto flex flex-row justify-center">
+    <!-- logo -->
+    <img src="https://fakeimg.pl/100/">
+    <!-- menu toggle button -->
+    <button id="toggleMobileMenu" type="button" class="absolute top-10 left-10 z-50">
+      <img src="images/menuicon.svg" width="40" height="40">
+    </button>
+  </div>
+  <!-- menu -->
+  <div id="mobileMenu" class="h-max w-full  absolute z-50 hidden">
+    <ul class="flex flex-col items-left gap-4 text-black p-4 text-xl font-medium">
+      <li id="toggleExams" class="">Sınavlar</l>
+      <div id="exams" class="hidden flex flex-col h-full w-full text-md align-start">
+        <a asp-area="" asp-action="LGS" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">LGS</a>
+        <a asp-area="" asp-action="TYT" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">TYT</a>
+        <a asp-area="" asp-action="AYT" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">AYT</a>
+        <a asp-area="" asp-action="YDT" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">YDT</a>
+        <a asp-area="" asp-action="YDS" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">YDS</a>
+        <a asp-area="" asp-action="KPSS" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">KPSS</a>
+        <a asp-area="" asp-action="GKGY" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">GKGY</a>
+        <a asp-area="" asp-action="OABT" asp-controller="Sinav" class="text-lg font-normal border-b-2- border-zinc-50 p-1">ÖABT</a>
+      </div>
+      <li id="toggleCourses">Kurslar</li>
+      <div id="courses" class="hidden flex flex-col h-full w-full text-md align-start">
+        <a asp-area="" asp-action="LGS" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">LGS</a>
+        <a asp-area="" asp-action="TYT" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">TYT</a>
+        <a asp-area="" asp-action="AYT" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">AYT</a>
+        <a asp-area="" asp-action="YDT" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">YDT</a>
+        <a asp-area="" asp-action="YDS" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">YDS</a>
+        <a asp-area="" asp-action="KPSS" asp-controller="Kurslar"class="text-lg font-normal border-b-2 border-zinc-50 p-1">KPSS</a>
+        <a asp-area="" asp-action="GKGY" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">GKGY</a>
+        <a asp-area="" asp-action="OABT" asp-controller="Kurslar" class="text-lg font-normal border-b-2 border-zinc-50 p-1">ÖABT</a>
+      </div>
+      <li><a asp-area="" asp-action="sinavTakvimi" asp-controller="Home">Sınav Takvimi</a> </li>
+      <li><a asp-area="" asp-controller="Home" asp-action="Iletisim">İletişim</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    <!-- ----------------------------------------------- -->
+    <!-- Courses Start -->
+    <section id="courses" class="w-full flex flex-row py-8 px-8 sm:px-0">
+        <div class="container mx-auto">
+                @RenderBody()
+        </div>
+    </section>
+    <!-- Courses End -->
+    <!-- ----------------------------------------------- -->
+    <!-- Contact Start -->
+  <section id="contact" class="w-full flex flex-col border-t-2 border-zinc-200 mt-20 py-8 px-8 sm:px-0">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8">
+            <div class="col-span-12 lg:col-span-7">
+                   @* <div id="successMessage" class="bg-green-500 p-4 text-white text-center" style="display: none;">
+                  <p class="text-lg font-bold">Mesajınız başarıyla alındı.</p>
+                  <p>En kısa sürede sizinle iletişime geçeceğiz.</p>
+                </div>*@
+                <div class="pb-8">
+                    <h1 class="text-red-600 text-3xl font-medium">Formu Gönderin Sizi Arayalım</h1>
+                    <p class="text-lg text-zinc-500">Avantajlı online ön kayıt başvurusu için formu doldurun, sizi arayalım!</p>
+                </div>
+                <form action="" method="post" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" name="fullname" placeholder="Ad & Soyad" class="border-2 border-zinc-200 rounded-md p-3" required>
+                    <input type="text" name="phone" placeholder="Telefon" class="border-2 border-zinc-200 rounded-md p-3" required>
+
+                    <select name="exam" placeholder="Sınav Seçiniz" class="border-2 border-zinc-200 rounded-md p-3" required>
+                        <option value="" disabled selected hidden>Sınav Seçiniz..</option>
+                        <option value="">KPSS</option>
+                        <option value="">ÖSS</option>
+                    </select>
+                    <div class="flex items-center my-4">
+                        <input id="accept" type="checkbox" name="accept" class="h-6 w-6 bg-zinc-200 border-none" required>
+                        <label for="accept" class="text-sm ml-2 text-zinc-800"><a class="underline" href="http://">Form gönderme koşullarını</a> ve <a class="underline" asp-area="" asp-action="KVKK" asp-controller="Home">KVKK kanunu</a> hakkındaki aydınlatma metnini okudum, onaylıyorum.</label>
+                    </div>
+                    <button id="submitButton" type="submit" class="bg-red-600 hover:bg-red-700 py-4 px-6 text-white font-medium text-xl rounded-md transition-all">Kayıt Ol</button>
+                </form>
+            </div>
+            <div class="col-span-12 sm:col-span-2 lg:col-span-5 mt-8 sm:mt-0">
+                <div class="grid grid-rows-2 gap-8">
+                    <div>
+                        <h1 class="text-red-600 text-3xl font-medium">Sınav Sonuçları</h1>
+                        <p class="text-lg text-zinc-500">Türkiye Geneli Deneme Sınavı Sonuçlarını Öğren!</p>
+                            <div class="flex flex-col my-4">
+                                <a asp-area="Identity" asp-page="/Account/Login" class="py-2 px-4 border-2 border-zinc-400 rounded-md transition-all hover:bg-red-600 hover:text-white hover:border-white font-medium text-sm mb-4 bg-red-600 hover:bg-red-700 text-white hover:text-black" >Öğrenci Girişi</a>
+                                <a asp-area="Identity" asp-page="/Account/Login" class="py-2 px-4 border-2 border-zinc-400 rounded-md transition-all hover:bg-red-600 hover:text-white hover:border-white font-medium text-sm mb-4 bg-red-600 hover:bg-red-700 text-white hover:text-black">Kurum Girişi</a>
+                                <a asp-area="" asp-action="sinavTakvimi" asp-controller="Home" class="py-2 px-4 border-2 border-zinc-400 rounded-md transition-all hover:bg-red-600 hover:text-white hover:border-white font-medium text-sm bg-red-600 hover:bg-red-700 text-white hover:text-black">Sınav Takvimi</a>
+                            </div>
+                    </div>
+                    <div>
+                        <h1 class="text-red-600 text-3xl font-medium">Hemen Sor Yanıtlayalım</h1>
+                        <p class="text-lg text-zinc-500">Yardıma mı ihtiyacın var? Hemen sor, yanıtlayalım, yayınlayalım yardımcı olmak için burada!</p>
+                        <div class="flex flex-col my-4">
+                                <a   asp-area="" asp-controller="Home" asp-action="Iletisim" class="py-2 px-4 border-2 border-zinc-400 rounded-md transition-all hover:bg-red-600 hover:text-white hover:border-white font-medium text-sm bg-red-600 hover:bg-red-700 text-white hover:text-black">Soru Sor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Contact End -->
+    <!-- ----------------------------------------------- -->
+    <!-- announcements start -->
+    <section id="announcements" class="w-full my-8 py-8 px-8 sm:px-0">
+        <div class="container mx-auto">
+            <!-- Sekme Başlıkları -->
+            <div class="w-full">
+                <ul class="flex flex-row gap-6 text-xl sm:text-2xl font-medium text-zinc-700 border-b-2 border-zinc-100">
+                    <li class="py-4 border-b-4 border-red-600 ">
+                        <button onclick="changeTab(0)" id="tab-0" class="tab-button active">Genel Duyurular</button>
+                    </li>
+                    <li class="py-4 border-red-400 text-zinc-400">
+                        <button onclick="changeTab(1)" id="tab-1" class="tab-button">Kurum İlanları</button>
+                    </li>
+                    <li class="py-4 text-zinc-400">
+                        <button onclick="changeTab(2)" id="tab-2" class="tab-button">Sınav Takvimi</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- İçerik Alanları -->
+            <div class="py-4 w-full overflow-x-auto">
+                <div id="tab-content-0" class="tab-content w-max flex flex-row  gap-4 overflow-y-hidden">
+                    <!-- Genel Duyurular İçeriği -->
+                    <!-- Announcement Card -->
+                   <!-- Announcement Card -->
+                    <div class="w-72 bg-white border-2 rounded-lg shadow-md p-4">
+                        <h1 class="mb-2 text-lg font-bold">Manisa Su Ve Kanalizasyon İdaresi 6 Memur Alacak</h1>
+                        <a class="flex items-center justify-between p-2 rounded-xl transition-all font-bold text-red-600 hover:textred-700" asp-area="" asp-action="Duyuru" asp-controller="Home">
+                            Devamını Oku
+                            <span class="ml-2">&#8250;</span>
+                        </a>
+                    </div>
+                    <!-- Announcement Card -->
+                    <div class="w-72 bg-white border-2 rounded-lg shadow-md p-4">
+                        <h1 class="mb-2 text-lg font-bold">Manisa Su Ve Kanalizasyon İdaresi 6 Memur Alacak</h1>
+                        <a class="flex items-center justify-between p-2 rounded-xl transition-all font-bold text-red-600 hover:textred-700"asp-area="" asp-action="Duyuru" asp-controller="Home">
+                            Devamını Oku
+                            <span class="ml-2">&#8250;</span>
+                        </a>
+                    </div>
+                    <!-- Announcement Card -->
+                    <div class="w-72 bg-white border-2 rounded-lg shadow-md p-4">
+                        <h1 class="mb-2 text-lg font-bold">Manisa Su Ve Kanalizasyon İdaresi 6 Memur Alacak</h1>
+                        <a class="flex items-center justify-between p-2 rounded-xl transition-all font-bold text-red-600 hover:textred-700" asp-area="" asp-action="Duyuru" asp-controller="Home">
+                            Devamını Oku
+                            <span class="ml-2">&#8250;</span>
+                        </a>
+                    </div>
+                    <!-- Announcement Card -->
+                      <div class="w-72 bg-white border-2 rounded-lg shadow-md p-4">
+                        <h1 class="mb-2 text-lg font-bold">Manisa Su Ve Kanalizasyon İdaresi 6 Memur Alacak</h1>
+                        <a class="flex items-center justify-between p-2 rounded-xl transition-all font-bold text-red-600 hover:textred-700" asp-area="" asp-action="Duyuru" asp-controller="Home">
+                            Devamını Oku
+                            <span class="ml-2">&#8250;</span>
+                        </a>
+                    </div>
+                    <!-- Announcement Card -->
+                   <div class="w-72 bg-white border-2 rounded-lg shadow-md p-4">
+                        <h1 class="mb-2 text-lg font-bold">Manisa Su Ve Kanalizasyon İdaresi 6 Memur Alacak</h1>
+                        <a class="flex items-center justify-between p-2 rounded-xl transition-all font-bold text-red-600 hover:textred-700" asp-area="" asp-action="Duyuru" asp-controller="Home">
+                            Devamını Oku
+                            <span class="ml-2">&#8250;</span>
+                        </a>
+                    </div>
+
+
+
+                </div>
+                <div id="tab-content-1" class="tab-content hidden">
+                    <!-- Kurum İlanları İçeriği -->
+                    <h2><a>Kurum İlanları</a></h2>
+                    <p>Bu sekme Kurum İlanları içeriğini gösterir.</p>
+                </div>
+                <div id="tab-content-2" class="tab-content hidden">
+                    <!-- Sınav Takvimi İçeriği -->
+                    <h2><a asp-action="sinavTakvimi" asp-controller="Home">Sınav Takvimi</a></h2>
+                    <p>Bu sekme Sınav Takvimi içeriğini gösterir.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- announcements end -->
+    <!-- ----------------------------------------------- -->
+    <!-- Informations start -->
+    <section id="informations" class="w-full my-8 py-8 border-y-2 border-zinc-100 px-8 sm:px-0" style="    margin-bottom: 0;
+    padding-bottom: 0 !important;">
+        <section id="informations" class="w-full my-8 py-8 border-y-2 border-zinc-100 px-8 sm:px-0">
+            <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
+                <!-- info card start -->
+                <div class="p-4 flex flex-col items-center bg-white rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <img src="~/img/school.png" alt="Öğrenci Sayısı" style="height:100px;widht:100px">
+                    </div>
+                    <h1 class="text-xl font-bold text-zinc-900">50.000+ Öğrenci</h1>
+                    <p class="text-md text-center">Kurumumuzdan eğitim almış olan memnun öğrenci sayısı</p>
+                </div>
+                <!-- info card end -->
+                <!-- info card start -->
+          
+                <!-- info card end -->
+                <!-- info card start -->
+                <div class="p-4 flex flex-col items-center bg-white rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <img src="~/img/education.png" alt="Uzman Eğitmen Sayısı" style="height:100px;widht:100px">
+                    </div>
+                    <h1 class="text-xl font-bold text-zinc-900">2000+ Uzman Eğitmen</h1>
+                    <p class="text-md text-center">Alanında uzman nitelikli eğitim kadromuzla tanışın</p>
+                </div>
+                <!-- info card end -->
+            </div>
+        </section>
+        </section>
+
+    <!-- Informations end -->
+
+   <footer class="bg-black text-white py-10">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="font-bold text-xl mb-4">Kurumsal</h3>
+                <ul class="space-y-2 list-disc list-inside">
+                    <li><a asp-area="" asp-action="KVKK" asp-controller="Home" class="text-white hover:text-gray-400">KVKK</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Hakkimizda" class="text-white hover:text-gray-400">Hakkımızda</a></li>
+                    <li><a  asp-area="" asp-controller="Home" asp-action="Hakkimizda" class="text-white hover:text-gray-400">Misyon & Vizyon</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Franchise" class="text-white hover:text-gray-400">Franchise</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-4">Akademi</h3>
+                <ul class="space-y-2 list-disc list-inside">
+                    <li><a asp-area="" asp-action="Yayinlarimiz" asp-controller="Home" class="text-white hover:text-gray-400">Yayınlarımız</a></li>
+                    <li><a  asp-area="" asp-controller="Home" asp-action="Franchise" class="text-white hover:text-gray-400">Franchise</a></li>
+                    <li><a  asp-area="" asp-controller="Home" asp-action="Iletisim" class="text-white hover:text-gray-400">İletişim</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-4">Sınavlar</h3>
+                <ul class="space-y-2 list-disc list-inside">
+                    <li><a href="#" class="text-white hover:text-gray-400">LGS</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">TYT</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">AYT</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">YDT</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">YDS</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">KPSS</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">GKGY</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">ÖABT</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    
+    <script>
+        function changeTab(tabIndex) {
+            // Tüm sekme butonlarını ve içerikleri seç
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Tüm sekme butonlarının ve içeriklerin sınıflarını güncelle
+            tabButtons.forEach((button, index) => {
+                if (index === tabIndex) {
+                    button.classList.add('active');
+                    button.parentElement.classList.add('border-b-4', 'border-red-500');
+                    button.parentElement.classList.remove('text-zinc-400');
+                    tabContents[index].classList.remove('hidden');
+                } else {
+                    button.classList.remove('active');
+                    button.parentElement.classList.remove('border-b-4', 'border-red-500');
+                    button.parentElement.classList.add('text-zinc-400');
+                    tabContents[index].classList.add('hidden');
+                }
+            });
+        }
+
+
+        const toggleButton = document.getElementById('toggleMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        toggleButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.parentElement.classList.toggle('h-screen');
+            mobileMenu.parentElement.classList.toggle('fixed');
+            mobileMenu.parentElement.classList.toggle('relative');
+        });
+
+        const toggleExamsButton = document.getElementById('toggleExams');
+
+        toggleExamsButton.addEventListener('click', () => {
+            const examsMenu = document.getElementById('exams');
+            examsMenu.classList.toggle('hidden');
+        });
+        const toggleCoursesButton = document.getElementById('toggleCourses');
+
+        toggleCoursesButton.addEventListener('click', () => {
+            const coursesMenu = document.getElementById('courses');
+            coursesMenu.classList.toggle('hidden');
+        });
+
+    </script>
+@*
+    <script>
+  var submitButton = document.getElementById('submitButton');
+  var successMessage = document.getElementById('successMessage');
+
+  submitButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Formun otomatik olarak gönderilmesini engelle
+    successMessage.style.display = 'block'; // Success mesajını görünür yap
+  });
+</script>*@
+</body>
+</html>

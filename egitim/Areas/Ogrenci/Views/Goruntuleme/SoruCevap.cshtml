@@ -1,0 +1,8 @@
+﻿@model SinavDetayViewModel
+    <h1>Soru Cevapları</h1>
+
+@foreach(var item in Model.Cevap.ToList())
+{
+    <h6>@item</h6>
+
+}

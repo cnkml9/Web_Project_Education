@@ -1,0 +1,22 @@
+﻿@model SinavDetayViewModel
+
+<table>
+    <tr>
+        <th>Konu Adı</th>
+        <th>Doğru Cevaplar</th>
+        <th>Yanlış Cevaplar</th>
+        <th>Boş Cevaplar</th>
+
+
+    </tr>
+    @foreach (var testDetay in Model.TestDetaylar)
+    {
+        <tr>
+            <td>@testDetay.Konu.Id</td>
+            <td>@testDetay.dogruCevap</td>
+            <td>@testDetay.YanlisCevap</td>
+            <td>@testDetay.BosCevap</td>
+
+        </tr>
+    }
+</table>

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <!-- ----------------------------------------------- -->
+<!-- Page Head Start -->
+<section id="pageHead" class="w-full  bg-zinc-900 text-white">
+  <div class="container mx-auto py-10 h-64 flex flex-col justify-center">
+    <h1 class="text-3xl font-bold pl-10">İletişim & Ulaşım</h1>
+<ul class="flex flex-row py-2 pl-10 gap-4">
+  <li class="text-zinc-400"><a href="#">Anasayfa</a></li>
+  <span>></span>
+  <li><a href="#">İletişim</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- Page Head End -->
+
+
+  <!-- Contact Start -->
+  <section class="w-full">
+    <div class="container mx-auto grid grid-cols-12 min-h-screen">
+      <div class="col-span-12 md:col-span-7 px-4 md:px-0 py-8">
+          <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12683.585764701476!2d27.262976!3d37.368627200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2str!4v1688423065719!5m2!1sen!2str" style="border:0;" class="w-full h-44 md:h-80 rounded-xl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div class="flex flex-col my-4">
+          <h2 class="font-medium text-xl">Telefon</h2>
+            <a href="tel:+" class="text-lg text-red-600">0000000000</a>
+            <a href="tel:+" class="text-lg text-red-600">0000000000</a>
+          </div>
+          <div class="flex flex-col my-4">
+          <h2 class="font-medium text-xl">Adres</h2>
+            <p>Adres bilgisi buraya gelecek</p>
+          </div>
+          <div class="flex flex-col my-4">
+          <h2 class="font-medium text-xl">Web & E-posta</h2>
+            <a href="mailto:"></a>
+            <a href="mailto:" class="text-lg text-red-600">webadress.com</a>
+            <a href="mailto:" class="text-lg text-red-600">mailadres@mail.com</a>
+          </div>
+      </div>
+      <div class="col-span-12 md:col-span-5 md:relative ">
+          <div class="bg-white px-4 md:p-6 rounded-xl h-max relative md:absolute w-full md:w-[400px] md:-top-32 md:right-0 drop-shadow-xl">
+            <div class="gap-2 grid mb-2">
+              <h1 class="text-xl font-medium">Bize mesaj gönderin</h1>
+              <p class="text-md font-thin">Görüşleriniz bizim için değerlidir. Her türlü öneri ve şikayet bildirimleriniz için bize mesaj yolu ile de ulaşabilirsiniz.</p>
+            </div>
+            <form action="" class="flex flex-col gap-4">
+                <input type="text" name="fullname" placeholder="Ad & Soyad" class="border-2 border-zinc-300 p-2 rounded-md" required>
+                <input type="text" name="phone" placeholder="Telefon" class="border-2 border-zinc-300 p-2 rounded-md" required>
+                <input type="text" name="mail" placeholder="E-Posta" class="border-2 border-zinc-300 p-2 rounded-md" required>
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Mesaj" class="border-2 border-zinc-300 p-2 rounded-md" required></textarea>
+                <div class=" border-2 border-zinc-300 p-2 rounded-md">
+                  <input type="checkbox" name="accept" id="accept" class="border-2 border-zinc-300 p-2 rounded-md" required>
+                  <label for="accept" class="text-sm w-full text-zinc-800"><a class="underline" href="http://">Form gönderme koşullarını</a> ve <a class="underline" href="http://">KVKK kanunu</a> hakkındaki aydınlatma metnini okudum, onaylıyorum.</label>
+                </div>
+                <button type="submit" class="bg-red-600 mt-4 hover:bg-zinc-800 transition-all text-white p-2 rounded-md">Gönder</button>
+            </form>
+            <p class="text-sm text-zinc-500 mt-2">Yapacağınız form gönderme işleminin herhangi bir resmi bağlayıcılığı yoktur.
+              Form aracılığıyla tarafımıza gönderdiğiniz, kişisel bilgiler ve iletişim bilgileriniz sayesinde size talebiniz ile ilgili dönüş sağlanması amaçlanmaktadır.
+              Kişisel bilgileriniz kesinlikle üçüncü kişilerle paylaşılmamaktadır.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact End -->

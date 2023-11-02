@@ -1,0 +1,117 @@
+﻿
+@model List<egitim.Entity.Kullanici>
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Anasayfa</h1>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>150</h3>
+
+                        <p>Öğrenci Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>29</h3>
+
+                        <p>Öğretmen Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>1500</h3>
+
+                        <p>Soru Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>65</h3>
+
+                        <p>Konu Anlatım Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Telefon Numarası</th>
+                <th>E-posta</th>
+                <th>Kuallancı Adı</th>
+                <th>Aktif/Pasif</th>
+                <th>Rol</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kullanici in Model)
+            {
+                <tr>
+                    <td>@kullanici.Ad</td>
+                    <td>@kullanici.telNo</td>
+                    <td>@kullanici.Email</td>
+                    <td>@kullanici.UserName</td>
+                    <td>@kullanici.Role</td>
+                    <td>
+                        @if (kullanici.Aktif)
+                        {
+                            <span class="text-success">Aktif</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Pasif</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="Home" asp-action="AktifPasifToggle" asp-route-id="@kullanici.Id" class="btn btn-primary">Durumu Değiştir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

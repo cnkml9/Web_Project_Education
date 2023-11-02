@@ -1,0 +1,51 @@
+﻿@model List<SinavDetayViewModel>
+
+<h1>Bitirilen Sınavlar</h1>
+
+@foreach (var sinav in Model)
+{
+    <h2>@sinav.SinavAdi</h2>
+    <button class="detay-btn" data-sinavid="@sinav.SinavId">Detayları Göster</button>
+    <div class="sinav-detay" id="sinav-detay-@sinav.SinavId"></div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+        $(document).ready(function() {
+            $(".detay-btn").click(function() {
+                var sinavId = $(this).data("sinavid");
+                var url = "/ogrenci/goruntuleme/sinavdetay?sinavId=" + sinavId;
+
+                $.get(url, function(data) {
+                    $("#sinav-detay-" + sinavId).html(data);
+                });
+            });
+        });
+</script>
+
+
+@*@model List<SinavDetayViewModel>
+
+<h1>Bitirilen Sınavlar</h1>
+
+@foreach (var sinav in Model)
+{
+    <h2>@sinav.SinavAdi</h2>
+    <button class="detay-btn" data-sinavid="@sinav.SinavId">Detayları Göster</button>
+    <div class="sinav-detay" id="sinav-detay-@sinav.SinavId"></div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+        $(document).ready(function() {
+            $(".detay-btn").click(function() {
+                var sinavId = $(this).data("sinavid");
+                var url = "/ogrenci/goruntuleme/SoruCevap?testId=" + sinavid;
+
+                $.get(url, function(data) {
+                    $("#sinav-detay-" + sinavId).html(data);
+                });
+            });
+        });
+</script>
+*@

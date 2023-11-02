@@ -1,0 +1,123 @@
+﻿@model EgitimWeb.Models.SorularViewModel
+
+<div class="lower-box">
+    <!-- Quiz Form -->
+    <div class="quiz-form">
+        <form method="post" action="contact.html">
+            <input type="hidden" id="testId" value="@Model.Test.Id" />
+            @foreach (var item in Model.Sorular.ToList())
+            {
+                <div class="sorular">
+                    <h6>@Html.Raw(item.SoruMetni)</h6>
+                    <input type="hidden" value="@item.Id" class="soruId" />
+                    <input type="hidden" value="@item.detayId" class="detayId" />
+                    <div class="form-group">
+                        <div class="radio-box">
+                            <input type="radio" cevap="A" name="selected-answer-@item.Id" class="cevap" id="type-9">
+                            <label for="type-9">@item.BirinciSecenek</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-box">
+                            <input type="radio" cevap="B" name="selected-answer-@item.Id" class="cevap" id="type-10">
+                            <label for="type-10">@item.IkıncıSecenek</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-box">
+                            <input type="radio" cevap="C" name="selected-answer-@item.Id" class="cevap" id="type-11">
+                            <label for="type-11">@item.UcuncuSecenek</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-box">
+                            <input type="radio" cevap="D" name="selected-answer-@item.Id" class="cevap" id="type-12">
+                            <label for="type-12">@item.DorduncuSecenek</label>
+                        </div>
+                    </div>
+                    @if (item.BesinciSecenek != "")
+                    {
+                        <div class="form-group">
+                            <div class="radio-box">
+                                <input type="radio" cevap="E" name="selected-answer-@item.Id" class="cevap" id="type-12">
+                                <label for="type-12">@item.DorduncuSecenek</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            <div class="form-group text-right">
+                <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">Submit Test</span></button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<div id="sonuc" style="display:none">
+    <div class="inner-container">
+        <!-- Sec Title -->
+        <div class="sec-title centered">
+            <h4>Sınav Sonucu</h4>
+        </div>
+        <ul class="result-options">
+            <li><span class="icon flaticon-check-1"></span>Doğru <i id="dogru">(25)</i></li>
+            <li><span class="icon flaticon-close"></span>Yanlış <i id="yanlis">(05)</i></li>
+            <li><span class="icon number"></span>Boş<i id="bos">(30)</i></li>
+        </ul>
+        <h2>Tebrikler! Sınavı Tamamladınız</h2>
+        <a asp-action="sinavOlustur" asp-controller="Home" asp-area="Ogrenci" class="theme-btn btn-style-one"><span class="txt">Sonuç İndir</span></a>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            event.preventDefault(); // Formun varsayılan gönderme işlemini engelle
+
+            // Seçilen cevapları toplamak için bir dizi oluştur
+            var cevaplar = [];
+
+            // Her soru için cevapları topla
+            $(".sorular").each(function () {
+                var soruId = $(this).find(".soruId").val();
+                var detayId = $(this).find(".detayId").val();
+                var secilenCevap = $(this).find(".cevap:checked").attr("cevap");
+                // İstek göndermek için cevapları diziye ekle
+                cevaplar.push({
+                    soruId: soruId,
+                    detayId: detayId,
+                    secilenCevap: secilenCevap
+                });
+            });
+
+            // Test ID'sini al
+            var testId = $("#testId").val();
+
+            // Ajax isteği gönder
+            $.ajax({
+                url: "/Ogrenci/home/sinavSonuc",
+                type: "POST",
+                data: {
+                    cevaplar: cevaplar,
+                    testId: testId
+                },
+                success: function (response) {
+                    $("#dogru").text("(" + response.dogruCevap + ")");
+                    $("#yanlis").text("(" + response.yanlisCevap + ")");
+                    $("#bos").text("(" + response.bosCevap + ")");
+
+                    // Gerekli görürseniz, lower-box'ı gizleyip sonucu gösterebilirsiniz
+                    $("#lowerBox").hide();
+                    $("#sonuc").show();
+                },
+                error: function (xhr, status, error) {
+                    // İstek başarısız olduğunda yapılacak işlemler
+                    console.log(error);
+                    alert("İstek gönderilirken bir hata oluştu.");
+                }
+            });
+        });
+    });
+</script>

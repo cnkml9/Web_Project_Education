@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "egitim", "egitim\egitim.csproj", "{A10AEC31-8FAE-484F-BF02-F4E2561DD3DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A10AEC31-8FAE-484F-BF02-F4E2561DD3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10AEC31-8FAE-484F-BF02-F4E2561DD3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10AEC31-8FAE-484F-BF02-F4E2561DD3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10AEC31-8FAE-484F-BF02-F4E2561DD3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73835CA7-3EF6-4EC5-93B9-6C3CCD70C507}
+	EndGlobalSection
+EndGlobal

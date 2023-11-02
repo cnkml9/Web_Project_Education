@@ -1,0 +1,47 @@
+﻿@model EgitimWeb.Entites.Egitim
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Düzenle</h1>
+
+<h4>Egitim</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fiyat" class="control-label"></label>
+                <input asp-for="fiyat" class="form-control" />
+                <span asp-validation-for="fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="resimYolu" class="control-label"></label>
+                <input asp-for="resimYolu" class="form-control" />
+                <span asp-validation-for="resimYolu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soruSayisi" class="control-label"></label>
+                <input asp-for="soruSayisi" class="form-control" />
+                <span asp-validation-for="soruSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<egitim.Entity.Kullanici> SignInManager
+@inject UserManager<egitim.Entity.Kullanici> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userRoles = user != null ? await UserManager.GetRolesAsync(user) : new List<string>();
+    if (user != null)
+    {
+        var kayitOlmaTarihi = user.KayitOlmaTarihi;
+    }
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+<ul class="flex flex-row gap-2">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="#" title="Manage">Merhaba @User.Identity.Name!</a>
+        </li>
+
+        @if (userRoles.Contains(egitim.Entity.Roller.Role_Admin) || userRoles.Contains(egitim.Entity.Roller.Role_Depo_Admin))
+        {
+           <li class="nav-item">
+               <a class="nav-link text-dark" href="/admin/home" title="Manage">
+                   <i class="fas fa-user-shield"></i> Admin Paneli
+               </a>
+           </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/ogrenci/home/sinavolustur" >
+                    <i class="fas fa-user-graduate"></i> Öğrenci Paneli
+                </a>
+            </li>
+        }
+
+        <li class="nav-item">
+            @{
+                DateTime kayitOlmaTarihi = user.KayitOlmaTarihi;
+                DateTime bugun = DateTime.Today;
+                TimeSpan kullanilanSure = bugun - kayitOlmaTarihi;
+                int kalanGunSayisi = 30 - kullanilanSure.Days;
+            }
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                @if (kullanilanSure.Days < 30)
+                {
+                    <div>
+                        <i class="far fa-clock"></i> @($"{kullanilanSure.Days} gün kullanıldı, {kalanGunSayisi} gün kaldı")
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <i class="fas fa-exclamation-triangle"></i> Deneme Süreniz Bitti
+                    </div>
+                }
+            </a>
+        </li>
+
+
+
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li >
+            <a class=" text-dark" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
+        </li>
+        <li >
+            <a class=" text-dark" asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>
+        </li>
+    }
+</ul>

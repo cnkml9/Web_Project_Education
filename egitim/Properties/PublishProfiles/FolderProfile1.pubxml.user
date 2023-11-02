@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\ekind\OneDrive\Masaüstü\sad</_PublishTargetUrl>
+    <History>True|2023-07-07T08:44:49.7603011Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>server=89.252.185.155\MSSQLSERVER2019%3b database=gurumeng_egitim2%3b user id=gurumeng_bdk%3b password=Mustafa12..</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
